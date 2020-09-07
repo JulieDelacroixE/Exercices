@@ -1,0 +1,70 @@
+
+* {
+    max-width: 100%;
+    height: auto;
+}
+
+body {
+    max-width: 1110px;
+    margin: 0 auto;
+}
+
+header {
+    background-color: white;
+}
+
+.boxhead {
+    display:inline-block;
+    width: 40%;
+}
+header p {
+    font-size: 2rem;
+    height: 10px;
+}
+
+ul {
+    background-color: black;
+    padding:30px;
+    margin: 0 auto
+    
+}
+
+ul li {
+    display:inline-block;
+}
+
+ul a {
+    color:#FFFF;
+}
+
+ul a:visited {
+    color:white;
+}
+
+.box {
+    display:inline-block;
+    width: 75%;
+    height: auto;
+}
+
+#box2 {
+    float:right;
+    width: 25%;
+    height:475px;
+    background-color:gray;
+
+}
+
+@media screen and (max-width: 768px) {
+    ul li {
+        display:block;
+    }
+
+    .box {
+        width: 100%;
+    }
+
+    #box2 {
+        display:none;
+    }
+}
