@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<body>
+    
+<form action = "" method="POST" name="form1">
+    <fieldset>
+        <legend>Vos coordonnées :</legend>
+        <p><strong>*</strong> Ces zones sont obligatoires pour envoyer le formulaire.</p>
+                <div id="form-societe" class="form2">
+                    <label for="societe">Société : </label>
+                    <input type="text" name="societe" id="societe"><br>
+                </div>
+                <div id="form-perscontact" class="form2">
+                    <label for="perscontact">Personne à contacter : </label>
+                    <input type="text" name="perscontact" id="perscontact"><br>  
+                </div>
+                <div id="form-adresse" class="form2">
+                    <label for="adresse">Adresse de l'entreprise</label>
+                    <textarea name="adresse" id="adresse"></textarea><br>
+                </div>
+                <div id="form-cp" class="form2">
+                    <label for="CP">Code postal : </label>
+                    <input type="number" name="cp" id="CP"><br>
+                </div>
+                <div id="form-ville" class="form2">
+                    <label for="ville">Ville :</label>
+                    <input type="text" name="ville" id="ville"><br>
+                </div>
+                <div id="form-email" class="form2">
+                   <label for="email">E-mail :</label>
+                    <input type="email" name="email" id="email"> 
+                </div>
+                <div id="form-tel" class="form2">
+                   <label for="tel">Téléphone : </label>
+                    <input type="number" name="tel" id="tel"><br> 
+                </div>
+                <div id="form-envprojet" class="form3">
+                    <label for="envprojet">Séléctionnez l'environnement technique du projet : </label>
+                    <textarea name="envprojet" id="envprojet"></textarea>
+                <div class = "selenvprojet">
+                <select name="envprojet" id="selecprojet">
+                        <option value="Choisissez" disabled selected>Choisissez</option>
+                        <option value="access">Access</option>
+                        <option value="Java">Java</option>
+                        <option value="delphi">Delphi</option>
+                        <option value="windev">Windev</option>
+                        <option value="visualbasic">Visual Basic</option>
+                        <option value="powerbuilder">Power Builder</option>
+                        <option value="internet">Internet</option>
+                        <option value="intranet">Intranet</option>
+                        <option value="windowsnt">Windows NT</option>
+                        <option value="unix">Unix</option>
+                        <option value="sqlserver">SQL Server</option>
+                        <option value="oracle">Oracle</option>
+                        <option value="autres">Autres</option>
+                    </select>
+                </div>
+                </div> 
+                
+                <div id="form-button" class="form4">
+                   <button type="submit" name="button" class="button" value="submit">Envoyer</button>
+                    <button type="reset" name="button" class ="button" value="reset">Annuler</button> 
+                </div>
+    </fieldset>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="contactjs.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+
+form {
+    display:grid;
+    max-width: 75%;
+}
+
+fieldset {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 100%;
+    align-items: start;
+    justify-content: center;
+}
+.form2{
+    display: grid;
+    width: 75%;
+    grid-template-columns: 25% 25% ;
+    align-items: center;
+    justify-content: center;
+    margin-top:1%;
+}
+
+.form4 {
+    display: grid;
+    width: 75%;
+    grid-template-columns: 25% 25% ;
+    align-items:center;
+    margin-top:1%;
+}
+#form-button {
+    display: grid;
+    width: 75%;
+    grid-template-columns: 15% 15% ;
+    justify-content: center;
+    width: 50%;
+}
+
+.form3 {
+    display: grid;
+    width: 75%;
+    grid-template-columns: 25% 25%;
+    justify-content:center;
+    margin-top:1%;
+    
+}
+
+
+legend {
+    font-weight: bold;
+    font-size: 150%;
+}
+label {
+    font-weight: bold;
+
+}
+
+p{
+    font-weight: bold;
+    color:rgb(83, 2, 2);
+    margin-top: 0%;
+}
+
+strong {
+    color:red;
+}
+
+input {
+    margin-left: 5%;
+}
+
+textarea {
+    margin-left: 5%;
+}
