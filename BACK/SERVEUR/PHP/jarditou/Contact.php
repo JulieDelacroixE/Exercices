@@ -112,7 +112,7 @@ if (!empty($_POST["submit"])) {
     </div>
 </header>
 
-<form id="form2" name="form2" method="POST" action="/formulaire.php"><br>
+<form id="form2" name="form2" method="POST" action="/Contact.php"><br>
 
     <p>* Ces zones sont obligatoires</p>
 
