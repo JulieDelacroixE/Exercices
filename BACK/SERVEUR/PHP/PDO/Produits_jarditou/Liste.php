@@ -20,7 +20,7 @@
        // Pas d'enregistrement
        die("La table est vide");
     }
-
+    echo '<br><a href="produits_ajout.php" class="btn btn-dark mb-2" role="button">Nouveau</a><br>';
     echo '<table class="table table-striped table-bordered m-auto">';
     echo '<thead>
     <tr class="table-active h4">
@@ -35,11 +35,11 @@
 
     while ($row = $result->fetch(PDO::FETCH_OBJ))
     {
-        echo '<tr class="table-warning">';
-        echo '<td><img class ="img-fluid" src= "jarditou_photos/'.$row->pro_id.'.'.$row->pro_photo.'"alt='.$row->pro_libelle.'></td>';
+        echo '<tr>';
+        echo '<td class="table-warning"><img class ="img-fluid" src="jarditou_photos/'.$row->pro_id.'.'.$row->pro_photo.'"alt='.$row->pro_libelle.' width="100" height="100"></td>';
         echo '<td>'.$row->pro_id.'</td>';
         echo '<td>'.$row->pro_ref.'</td>';
-        echo '<td><a href="detail.php?id='.$row->pro_id.'" title='.$row->pro_libelle.'>'.$row->pro_libelle.'</a></td>';
+        echo '<td class="table-warning"><a href="detail.php?id='.$row->pro_id.'" title='.$row->pro_libelle.' style="color: red; text-decoration: underline;">'.$row->pro_libelle.'</a></td>';
         echo '<td>'.$row->pro_prix.'</td>';
         echo '<td>'.$row->pro_couleur.'</td>';
         echo"</tr>";

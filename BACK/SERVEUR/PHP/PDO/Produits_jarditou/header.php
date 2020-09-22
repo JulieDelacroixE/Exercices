@@ -11,7 +11,7 @@
         <header>
             <div class="row justify-content-between align-self-start">
                 <div class="col-4">
-                    <img class="img-fluid" src="public/images/jarditou_logo.jpg" alt="jarditoulogo" width="200" height="auto">
+                    <img class="img-fluid" src="jarditou_photos/jarditou_logo.jpg" alt="jarditoulogo" width="200" height="auto">
                 </div>
                 <div class="col-4">
                     <p class="h2 ml-5 pt-3 d-none d-lg-block">Tout le jardin</p>
@@ -41,3 +41,10 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
         </form>
     </nav>
+
+    <div class="row">
+        <div class="col-12">
+            <img class="img-fluid" src="jarditou_photos/promotion.jpg" alt="Jarditou promotion">
+        </div>
+    </div>
+</header>
