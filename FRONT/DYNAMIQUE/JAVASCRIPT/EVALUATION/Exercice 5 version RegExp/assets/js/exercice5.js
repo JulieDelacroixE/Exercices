@@ -8,7 +8,7 @@ var email = document.getElementById("email");
 var sujet = document.getElementById("sujet").value;
 var question = document.getElementById("question");
 var valid = document.getElementById("valider");
-var charU = new RegExp("^[ a-zA-Z]+$");
+var charU = new RegExp("^[ a-zA-Z '-]+$");
 var filtreDate = new RegExp("^[0-9]{2}\/[0-9]{2}\/[0-9]{4}$");
 var filtreCp = new RegExp("^[0-9]{5}$");
 var filtreEmail = new RegExp("^[_a-z0-9-]+(.[_a-z0-9-]+)+@[a-z]+.[a-z]{2,3}$");
@@ -21,15 +21,25 @@ document.getElementById("form2").addEventListener("submit", function(evenement) 
         nom.focus();
     }
 
+    else {
+        document.getElementById("alerte-nom").textContent = "";
+    }
+
     if (charU.test(prenom.value) == false) {
         evenement.preventDefault();
         document.getElementById("alerte-prenom").textContent = "Veuillez entrer un prénom valide !";
         prenom.focus();
     }
+    else {
+        document.getElementById("alerte-prenom").textContent = "";
+    }
 
     if (sexe1.checked == false && sexe2.checked == false) {
         evenement.preventDefault();
         document.getElementById("alerte-sexe").textContent = "Veuillez cocher votre sexe !";
+    }
+    else {
+        document.getElementById("alerte-sexe").textContent = "";
     }
 
     if (filtreDate.test(ddn.value) == false) {
@@ -37,26 +47,41 @@ document.getElementById("form2").addEventListener("submit", function(evenement) 
         document.getElementById("alerte-date").textContent = "Veuillez entrer une date de naissance valide";
         ddn.focus();
     }
+    else {
+        document.getElementById("alerte-date").textContent = "";
+    }
 
     if (filtreCp.test(cp.value) == false) {
         evenement.preventDefault();
         document.getElementById("alerte-cp").textContent = "Veuillez entrer un code postal valide !";
         cp.focus();
     }
+    else {
+        document.getElementById("alerte-cp").textContent = "";
+    }
     if (filtreEmail.test(email.value) == false) {
         evenement.preventDefault();
         document.getElementById("alerte-email").textContent = "Veuillez entrer un email valide !";
         email.focus();
     }
+    else {
+        document.getElementById("alerte-email").textContent = "";
+    }
     if (filtreQuestion.test(question.value) == false ){
         evenement.preventDefault();
-        document.getElementById("alerte-question").textContent = "Veuillez entrer votre question !"
+        document.getElementById("alerte-question").textContent = "Veuillez entrer votre question !";
         question.focus();
+    }
+    else {
+        document.getElementById("alerte-question").textContent = "";
     }
 
     if (valid.checked == false) {
         evenement.preventDefault();
         document.getElementById("alerte-valider").textContent = "Veuillez accepter le traitement de votre formulaire";
+    }
+    else {
+        document.getElementById("alerte-valider").textContent = "";
     }
 })
 
