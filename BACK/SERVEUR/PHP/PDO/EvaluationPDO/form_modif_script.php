@@ -3,7 +3,7 @@ require "connexion_bdd.php";
 $db = connexionBase();
 
 $pro_id = $_GET['id'];
-$ref = $categorie = $libelle = $description = $prix = $stock = $couleur = $block = $dateAjout = $dateModif = "";
+$ref = $categorie = $libelle = $description = $prix = $stock = $couleur = $block = $photo = $dateAjout = $dateModif = "";
 
 $requete = "SELECT * FROM produits
 JOIN categories ON cat_id = pro_cat_id
@@ -13,8 +13,40 @@ $result = $db->query($requete);
 $produit = $result->fetch(PDO::FETCH_OBJ);
 $result->closeCursor();
 
+// Verif données + redefinition variables
 
 if (!empty($_POST["submit"])) {
+    if (!empty($_FILES["photo"])) {
+        var_dump($_FILES);
+        if ($_FILES["photo"]["error"] === UPLOAD_ERR_INI_SIZE) {
+            echo "fichier trop gros";
+        }
+        if ($_FILES["photo"]["error"] === UPLOAD_ERR_OK) 
+        {
+                $aMimeTypes = array("image/gif", "image/jpeg", "image/pjpeg", "image/x-png", "image/tiff", "image/png");
+                $finfo = finfo_open(FILEINFO_MIME_TYPE);
+                $mimetype = finfo_file($finfo, $_FILES["photo"]["tmp_name"]);
+                    finfo_close($finfo);
+                    if (in_array($mimetype, $aMimeTypes)) 
+                    {
+                        $tmp_name = $_FILES["photo"]["tmp_name"];
+                        $extension = substr(strrchr($_FILES["photo"]["name"], "."), 1);
+                        move_uploaded_file($_FILES["photo"]["tmp_name"], "jarditou_photos/$pro_id.$extension");
+                        $pro_id.$extension;
+                        $photo = $extension;
+                    }
+                    else
+                    {
+                        exit("Type de fichier non autorisé");
+                    }
+                        
+        }
+        
+    }
+    else 
+    {
+    $photo = $produit->pro_photo;
+    }
     if (!empty($_POST['ref']) && preg_match("#[a-zA-Z]{1,10}#", $_POST['ref']))
     {
         $ref = $_POST['ref'];
@@ -99,8 +131,6 @@ if (!empty($_POST["submit"])) {
     else {
         echo "Erreur, date modif";
     }
-    $photo = "jpg";
-
 }
 
 //Modification du produit dans la bdd
@@ -120,5 +150,7 @@ WHERE produits.pro_id = $pro_id;";
         print "Erreur ! " . $e->getMessage() . "<br/>";
      }
 
-     header("Location:liste.php");
+ //Redirection    
+     header("Location:Index.php");
+    
 ?>

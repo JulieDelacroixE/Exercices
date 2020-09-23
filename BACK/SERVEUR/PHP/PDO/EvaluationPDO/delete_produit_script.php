@@ -17,5 +17,5 @@ catch (Exception $e) {
    print "Erreur ! " . $e->getMessage() . "<br/>";
 }
 
-header("Location:liste.php");
+header("Location:Index.php");
 ?>

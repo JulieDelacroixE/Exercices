@@ -69,7 +69,7 @@
                 <input type="text" class="form-control" id="dateAjout" value="<?php echo $produit->pro_d_ajout?>" disabled>
                 <label for="dateModif">Date de modification</label>
                 <input type="text" class="form-control" id="dateModif" value="<?php echo $produit->pro_d_modif?>" disabled><br>
-                <a href="liste.php" class="btn btn-dark" role="button">Retour</a>
+                <a href="Index.php" class="btn btn-dark" role="button">Retour</a>
                 <a class="btn btn-warning" role="button" href="form_modif.php?id=<?php echo intval($_GET['id'])?>">Modifier</a>
                 <a class="btn btn-warning" role="button" id="buttonDel" >Supprimer</a>
             </div>

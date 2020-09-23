@@ -1,10 +1,23 @@
 <?php include("header.php");?>
+
+<?php 
+require "connexion_bdd.php";
+$db = connexionBase();
+$pro_id = $_GET['id'];
+$requete = "SELECT * FROM produits
+JOIN categories ON cat_id = pro_cat_id
+WHERE pro_id = $pro_id";
+
+$result = $db->query($requete);
+$produit = $result->fetch(PDO::FETCH_OBJ);
+$result->closeCursor();
+?>
 <br>         
-<p class="h2">Ajouter un produit</p><br>
+<p class="h2">Modifier un produit</p><br>
 <div class="form-group">
-    <form action="produit_ajout_script.php" method="POST">
+    <form action="form_modif_script.php?id=<?php echo $pro_id?>" method="POST" enctype="multipart/form-data">
                 <label for="ref">Référence</label>
-                <input type="text" class="form-control" id="ref" name="ref">
+                <input type="text" class="form-control" id="ref" name="ref" value="<?php echo $produit->pro_ref;?>">
                 <span name="referenceErr"></span>
                 <div class="form-group">
                 <label for="Categorie">Catégorie</label>
@@ -37,15 +50,15 @@
                 </select>
                 </div>
                 <label for="">Libellé</label>
-                <input type="text" class="form-control" id="" name="libelle">
+                <input type="text" class="form-control" id="" name="libelle" value="<?php echo $produit->pro_libelle?>">
                 <label for="">Description</label>
-                <textarea class="form-control" id="" name="description"rows="3" ></textarea>
+                <textarea class="form-control" id="" name="description"rows="3" ><?php echo $produit->pro_description?></textarea>
                 <label for="">Prix</label>
-                <input type="text" class="form-control" id="" name ="prix">
+                <input type="text" class="form-control" id="" name ="prix" value="<?php echo $produit->pro_prix?>">
                 <label for="">Stock</label>
-                <input type="text" class="form-control" id="" name="Stock">
+                <input type="text" class="form-control" id="" name="Stock" value="<?php echo $produit->pro_stock?>">
                 <label for="">Couleur</label>
-                <input type="text" class="form-control" id="" name="couleur">
+                <input type="text" class="form-control" id="" name="couleur" value="<?php echo $produit->pro_couleur?>">
                 <div class="form-group"><br>
                     <label for="block">Bloqué ?</label><br>
                         <div class="form-check form-check-inline">
@@ -58,10 +71,13 @@
                         </div>
                 </div>
                 <label for="dateAjout">Date d'ajout</label>
-                <input type="text" class="form-control" id="dateAjout" name="d-ajout" placeholder="AAAA-MM-JJ HH:MM:SS">
+                <input type="text" class="form-control" id="dateAjout" name="d-ajout"  value="<?php echo $produit->pro_d_ajout?>" disabled>
                 <label for="dateModif">Date de modification</label>
-                <input type="text" class="form-control" id="dateModif" name="d-modif" disabled><br>
-                <input type="submit" name="submit" class="btn btn-warning" value="ajouter">
+                <input type="text" class="form-control" id="dateModif" name="d-modif" value="<?php echo $produit->pro_d_modif?>"><br>
+                <label for="photo">Ajouter une photo</label><br>
+                <input type="file" name="photo" id="photo"><br>
+                <input type="hidden" name="MAX_FILE_SIZE" value="8000000"><br>
+                <input type="submit" name="submit" class="btn btn-warning" value="Envoyer">
     </form>
 </div>
 
