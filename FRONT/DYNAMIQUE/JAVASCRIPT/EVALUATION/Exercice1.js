@@ -1,6 +1,8 @@
 var jeune = 0;
 var moyen = 0;
 var vieux = 0;
+
+//Tant que l'utilisateur n'entre pas "100", on continue de lui demander des âges, qui sont ensuite rangé et compté 
 do {
   var age = parseInt(window.prompt("Entrez un âge : "));
     
