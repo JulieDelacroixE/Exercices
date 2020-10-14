@@ -30,11 +30,10 @@ if (!empty($_POST["submit"])) {
                     if (in_array($mimetype, $aMimeTypes)) 
                     {
                         $ext = $produit->pro_photo;
-                        unlink('jarditou_photos/'.$produit->pro_id.'.'.$ext);
+                        unlink('src/jarditou_photos/'.$produit->pro_id.'.'.$ext);
                         $tmp_name = $_FILES["photo"]["tmp_name"];
                         $extension = substr(strrchr($_FILES["photo"]["name"], "."), 1);
-                        move_uploaded_file($_FILES["photo"]["tmp_name"], "jarditou_photos/$pro_id.$extension");
-                        $pro_id.$extension;
+                        move_uploaded_file($_FILES["photo"]["tmp_name"], "src/jarditou_photos/$pro_id.$extension");
                         $photo = $extension;
                     }
                     else
@@ -51,7 +50,19 @@ if (!empty($_POST["submit"])) {
     }
     if (!empty($_POST['ref']) && preg_match("#[a-zA-Z]{1,10}#", $_POST['ref']))
     {
-        $ref = $_POST['ref'];
+        $sql = "SELECT pro_ref FROM produits WHERE pro_ref = ?";
+        $refExist = $db->prepare($sql);
+        $refExist->execute(array($_POST["ref"]));
+
+        if ($refExist->rowCount() == 0) {
+            
+            $ref = $_POST['ref'];
+        }
+        else {
+            header("Location:form_modif.php?id=$produit->pro_id&&error=ref");
+            exit;
+        }    
+        
     }
     else if (empty($_POST['ref'])) {
 
@@ -150,9 +161,7 @@ WHERE produits.pro_id = $pro_id;";
 
     catch (Exception $e) {
         print "Erreur ! " . $e->getMessage() . "<br/>";
-     }
+     }  
 
- //Redirection    
-     header("Location:Index.php");
-    
+    header("Location:Tableau.php");
 ?>
