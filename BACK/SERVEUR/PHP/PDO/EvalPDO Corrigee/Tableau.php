@@ -101,9 +101,9 @@
         <?php for ($page = 1; $page <= $nbPages; $page++) { ?>
         <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>"><a class="page-link" href="Tableau.php?page=<?= $page ?>"><?= $page ?></a></li>
         <?php } ?>
-        <li class="page-item<?= ($currentPage == $nbPages) ? "disabled" : "" ?>"><a class="page-link" href="Tableau.php?page=<?= $currentPage +1?>">Suivant</a></li>
+        <li class="page-item <?= ($currentPage == $nbPages) ? "disabled" : "" ?>"><a class="page-link" href="Tableau.php?page=<?= $currentPage +1?>">Suivant</a></li>
     </ul>
-
+    
 </nav>
 </div>
 
