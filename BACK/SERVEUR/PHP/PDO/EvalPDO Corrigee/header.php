@@ -11,7 +11,7 @@
             </div>
 
     <nav class="navbar navbar-expand-sm bg-light navbar-light">
-        <a class="navbar-brand" href="#">Jarditou.com</a>
+        <a class="navbar-brand" href="Index.php">Jarditou.com</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
         </button>   
@@ -28,9 +28,12 @@
                 </li>
             </ul>
         </div>
-        <form class="form-inline d-none d-lg-block">
-            <input class="form-control mr-sm-2" type="search" placeholder="Votre promotion" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
+        <form class="form-inline d-none d-lg-block" method="POST" action="recherche.php">
+            <div class="form-group">
+            <label for="search"></label>
+            <input class="form-control mr-sm-2" type="text" placeholder="Votre promotion" name="search" id="search">
+            <input class="btn btn-outline-success my-2 my-sm-0" type="submit" name="submit" value="rechercher">
+            </div>
         </form>
     </nav>
 
