@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <title>Jarditou produit</title>
 </head>
@@ -11,12 +12,34 @@
 
 
 <?php
+
+    if(isset($_GET['page']) && !empty($_GET['page'])) {
+        $currentPage = (int) strip_tags($_GET['page']);
+    }
+    else {
+    $currentPage = 1;
+    }
+
+
+
     require "connexion_bdd.php"; // Inclusion de notre bibliothèque de fonctions
     $db = connexionBase(); // Appel de la fonction de connexion
+    $sql = "SELECT COUNT(*) AS `nb_produits` FROM produits";
+    $query = $db->prepare($sql);
+    $query->execute();
+    $result = $query->fetch();
 
-    $requete = "SELECT * FROM produits ORDER BY pro_id ASC";
+    $nbProduits = (int) $result['nb_produits'];
+    $parPage = 7;
+    $nbPages = ceil($nbProduits / $parPage);
+    $premierProduit = ($currentPage * $parPage) - $parPage;
 
-    $result = $db->query($requete);
+    $requete = "SELECT * FROM produits ORDER BY pro_id ASC LIMIT :premier, :parPage";
+
+    $result = $db->prepare($requete);
+    $result->bindValue(":premier", $premierProduit, PDO::PARAM_INT);
+    $result->bindValue(":parPage", $parPage, PDO::PARAM_INT);
+    $result->execute();
 
     if (!$result) 
     {
@@ -71,6 +94,18 @@
     echo "</table>"; 
     ?>
 
+<div class="">
+<nav class="navbar-expand-sm mt-3">
+    <ul class="pagination justify-content-center">
+        <li class="page-item <?= ($currentPage == 1) ? "disabled" : "" ?>"><a class="page-link" href="Tableau.php?page=<?= $currentPage - 1?>">Précédent</a></li>
+        <?php for ($page = 1; $page <= $nbPages; $page++) { ?>
+        <li class="page-item <?= ($currentPage == $page) ? "active" : "" ?>"><a class="page-link" href="Tableau.php?page=<?= $page ?>"><?= $page ?></a></li>
+        <?php } ?>
+        <li class="page-item<?= ($currentPage == $nbPages) ? "disabled" : "" ?>"><a class="page-link" href="Tableau.php?page=<?= $currentPage +1?>">Suivant</a></li>
+    </ul>
+
+</nav>
+</div>
 
 <?php 
     include("footer.php");

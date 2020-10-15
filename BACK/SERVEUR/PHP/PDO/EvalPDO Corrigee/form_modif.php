@@ -43,12 +43,14 @@ else {
             
                 <label for="categorie">Catégorie :</label><br>
                 <select class="form-control" name="categorie" id="categorie">
+                
                 <?php
 
                 $sql = "SELECT cat_nom, cat_id FROM categories ORDER BY cat_nom";
 
                 foreach ($db->query($sql) as $row)
                 {
+                echo "<option value='$produit->pro_cat_id'>" . $produit->cat_nom . "</option selected>";
                 echo "<option value='$row[cat_id]'>" . $row[cat_nom] . "</option>";
                 }
                 ?>

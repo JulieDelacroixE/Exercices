@@ -23,6 +23,7 @@ if (!empty($_POST["submit"])) {
        }
        else {
         header("Location:produits_ajout.php?error=ref");
+        exit;
        }
         
     }
@@ -186,6 +187,6 @@ catch (Exception $e) {
     print "Erreur ! " . $e->getMessage() . "<br/>";
 }
 
-
+header("Location:Tableau.php");
      
 ?>

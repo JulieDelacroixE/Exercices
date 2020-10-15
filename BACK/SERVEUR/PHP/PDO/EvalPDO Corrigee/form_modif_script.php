@@ -53,8 +53,9 @@ if (!empty($_POST["submit"])) {
         $sql = "SELECT pro_ref FROM produits WHERE pro_ref = ?";
         $refExist = $db->prepare($sql);
         $refExist->execute(array($_POST["ref"]));
-
-        if ($refExist->rowCount() == 0) {
+        echo $produit->cat_ref;
+        echo $_POST['ref'];
+        if ($refExist->rowCount() == 0 || $_POST['ref'] == $produit->pro_ref) {
             
             $ref = $_POST['ref'];
         }
@@ -164,4 +165,5 @@ WHERE produits.pro_id = $pro_id;";
      }  
 
     header("Location:Tableau.php");
+    exit;
 ?>
